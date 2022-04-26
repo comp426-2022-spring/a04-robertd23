@@ -47,7 +47,7 @@ app.use(express.json());
 
 
 if (args.log == 'true') {
-  const logger = fs.createWriteStream("access.log", {flags: 'a'})
+  const log = fs.createWriteStream("access.log", {flags: 'a'})
   app.use(morgan('combined', {stream: logger}))
 }
 
