@@ -47,7 +47,7 @@ app.use(express.json());
 
 
 if (args.log == 'true') {
-  const logger = fs.createWriteStream("access.log", {flags: 'a'})
+  const log = fs.createWriteStream("access.log", {flags: 'a'})
   app.use(morgan('combined', {stream: logger}))
 }
 
@@ -58,7 +58,6 @@ app.use( (req, res, next) => {
     remoteuser: req.user,
     time: Date.now(),
     method: req.method,
-    url: req.url,
     protocol: req.protocol,
     httpversion: req.httpVersion,
     status: res.statusCode,
