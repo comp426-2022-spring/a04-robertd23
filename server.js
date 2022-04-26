@@ -4,6 +4,8 @@ const app = express()
 const morgan = require('morgan')
 const fs = require('fs')
 const db = require('/database.js')
+const { isArgumentsObject } = require('util/types')
+const { Stream } = require('stream')
 
 const args = require("minimist")(process.argv.slice(2));
 args["port"];
@@ -38,6 +40,13 @@ if (args.help || args.h) {
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
+
+
+if (args.log == 'true') {
+  const logger = fs.createWriteStream("log", {flags: 'a'})
+  app.use(morgan('combined', {stream: WRITESTREAM}))
+}
+
 
 
 
