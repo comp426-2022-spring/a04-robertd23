@@ -40,6 +40,7 @@ server.js [options]
 if (args.help || args.h) {
     console.log(help)
     process.exit(0)
+    console.log('issue present')
 }
 
 app.use(express.urlencoded({extended: true}));
