@@ -183,14 +183,7 @@ app.get('/app/flips/:number', (req, res) => {
     let counter = countFlips(flipper);
     res.status(200).json({"raw": flipper, "summary" : counter})
 });
-//app.get('/app/flips/call/heads', (req, res) => {
-//    var val = flipACoin('heads');
-//    res.stat(200).json(val)
-//});
-//app.get('/app/flips/call/tails', (req, res) => {
-//    var val = flipACoin('tails');
-//    res.stat(200).json(val)
-//});
+
 
 app.get('/app/flip/call/:hort', (req, res) => {
     let flippest = flipACoin(req.params.hort);
