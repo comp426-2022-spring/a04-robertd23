@@ -61,6 +61,7 @@ app.use( (req, res, next) => {
     remoteuser: req.user,
     time: Date.now(),
     method: req.method,
+    url: req.url,
     protocol: req.protocol,
     httpversion: req.httpVersion,
     status: res.statusCode,
