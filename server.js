@@ -3,16 +3,20 @@ const express = require('express')
 const app = express()
 const morgan = require('morgan')
 const fs = require('fs')
-const db = require('/database.js')
+const db = require('./database.js')
 const { isArgumentsObject } = require('util/types')
 const { Stream } = require('stream')
 
 const args = require("minimist")(process.argv.slice(2));
 args["port"];
-HTTP_PORT = args.port || 5000;
+const HTTP_PORT = args.port || 5000;
 
-// Require minimist module
-const args = require('minimist')(process.argv.slice(2))
+const server = app.listen(HTTP_PORT, () => {
+  console.log('App listening on port %PORT%'.replace('%PORT%',HTTP_PORT))
+});
+
+
+
 // See what is stored in the object produced by minimist
 console.log(args)
 // Store help text 
@@ -65,7 +69,7 @@ app.use( (req, res, next) => {
   const stmt = db.prepare('INSERT INTO accesslog (remoteaddr, remoteuser, time, method, url, protocol, httpversion, status, referer, useragent) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)')
   const info = stmt.run(logdata.remoteaddr, logdata.remoteuser, logdata.time, logdata.method, logdata.url, logdata.protocol, logdata.httpversion, logdata.status, logdata.referer, logdata.useragent)
   // res.status(200).json(info)
-  next()
+  next();
 
   })
 
@@ -159,11 +163,6 @@ function flipACoin(call) {
 
 
 
-
-// Start an app server
-const server = app.listen(HTTP_PORT, () => {
-    console.log('App listening on port %PORT%'.replace('%PORT%',HTTP_PORT))
-});
 
 
 app.get('/app/', (req, res) => {
