@@ -47,7 +47,7 @@ app.use(express.json());
 
 
 if (args.log == 'true') {
-  const logging = fs.createWriteStream("access.log", {flags: 'a'})
+  const logger = fs.createWriteStream("access.log", {flags: 'a'})
   app.use(morgan('combined', {stream: logger}))
 }
 
@@ -67,7 +67,7 @@ app.use( (req, res, next) => {
   };
 
   const stmt = db.prepare('INSERT INTO accesslog (remoteaddr, remoteuser, time, method, url, protocol, httpversion, status, referer, useragent) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)')
-  const info = stmt.run(logdata.remoteaddr, logdata.remoteuser, logdata.time, logdata.method, logdata.url, logdata.protocol, logdata.httpversion, logdata.status, logdata.referer, logdata.useragent)
+  const info = stmt.run(logdata.remoteaddr, logdata.remoteuser, logdata.time, logdata.method, logdata.protocol, logdata.httpversion, logdata.status, logdata.referer, logdata.useragent)
   // res.status(200).json(info)
   next();
 
