@@ -39,8 +39,9 @@ server.js [options]
 // If --help or -h, echo help text to STDOUT and exit
 if (args.help || args.h) {
     console.log(help)
-    process.exit(0)
     console.log('issue present')
+    process.exit(0)
+    
 }
 
 app.use(express.urlencoded({extended: true}));
@@ -50,6 +51,7 @@ app.use(express.json());
 if (args.log == 'true') {
   const log = fs.createWriteStream("access.log", {flags: 'a'})
   app.use(morgan('combined', {stream: logger}))
+  console.log('this works as intended and the log exists')
 }
 
 app.use( (req, res, next) => {
