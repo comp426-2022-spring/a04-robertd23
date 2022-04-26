@@ -79,6 +79,7 @@ app.get('/app/log/access', (req, res) => {
     res.status(200).json(stmt)
 } catch {
     console.error(e)
+    console.log('issue found')
 }
 
 });
