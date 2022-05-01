@@ -14,7 +14,7 @@ const stmt = db.prepare(`
 let row = stmt.get();
 
 if (row === undefined) {
-// Echo information about what you are doing to the console.
+
     console.log('Your database appears to be empty. I will initialize it now.');
 // Set a const that will contain your SQL commands to initialize the database.
     const sqlInit = `
