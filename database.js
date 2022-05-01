@@ -14,7 +14,6 @@ const stmt = db.prepare(`
 let row = stmt.get();
 
 if (row === undefined) {
-
     console.log('Your database appears to be empty. I will initialize it now.');
     const sqlInit = `
         CREATE TABLE accesslog ( 
