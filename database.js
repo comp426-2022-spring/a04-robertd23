@@ -31,7 +31,6 @@ if (row === undefined) {
             referer TEXT,
             useragent TEXT
             );
-
     `;
     db.exec(sqlInit);
     console.log('Your database has been initialized with a new table and two entries containing a username and password.');
