@@ -41,5 +41,4 @@ if (row === undefined) {
 
     console.log('Database exists.')
 }
-
 module.exports = db
