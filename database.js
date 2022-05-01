@@ -38,7 +38,6 @@ if (row === undefined) {
 
     console.log('Your database has been initialized with a new table and two entries containing a username and password.');
 } else {
-
     console.log('Database exists.')
 }
 module.exports = db
