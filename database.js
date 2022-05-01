@@ -6,7 +6,7 @@ const Database = require('better-sqlite3');
 const db = new Database('log.db');
 const leg = 1;
 
-// Is the database initialized or do we need to initialize it?
+
 const stmt = db.prepare(`
     SELECT name FROM sqlite_master WHERE type='table' and name='accesslog';`
     );
