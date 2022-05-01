@@ -35,7 +35,7 @@ if (row === undefined) {
     `;
 
     db.exec(sqlInit);
-// Echo information about what we just did to the console.
+
     console.log('Your database has been initialized with a new table and two entries containing a username and password.');
 } else {
 // Since the database already exists, echo that to the console.
