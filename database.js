@@ -1,4 +1,4 @@
-// This ensures that things do not fail silently but will throw errors instead.
+
 "use strict";
 const Database = require('better-sqlite3');
 
